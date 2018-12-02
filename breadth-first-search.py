@@ -6,10 +6,10 @@ graph = {"S": ["A", "B"],
          "G": ["A"]}
 
 
-def deep_first_search(g, start):
+def breadth_first_search(g, start):
     visited, stack, cost = [], [start], 0
     while stack:
-        node = stack.pop()  # LiFo -> deeper nodes are prioritized
+        node = stack.pop(0)  # FiFo -> first element from queue is taken
 
         if node not in visited:
             visited.append(node)
@@ -20,5 +20,4 @@ def deep_first_search(g, start):
 
 
 if __name__ == '__main__':
-    print(deep_first_search(graph, "S"))  # ['S', 'B', 'C', 'A', 'G']
-
+    print(breadth_first_search(graph, "S"))  # ['S', 'A', 'B', 'C', 'G']

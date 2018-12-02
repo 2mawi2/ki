@@ -1,4 +1,3 @@
-
 # child nodes are defined in alphabetical order
 graph = {"S": ["A", "B"],
          "B": ["S", "C"],
@@ -14,11 +13,19 @@ costs = {
     "AG": 2
 }
 
+heuristic = {
+    "S": 5,
+    "B": 3,
+    "C": 2,
+    "A": 2,
+    "G": 0
+}
+
 
 def deep_first_search(g, start):
     visited, stack, cost = [], [start], 0
     while stack:
-        node = stack.pop()
+        node = stack.pop() #
 
         if node not in visited:
             visited.append(node)
