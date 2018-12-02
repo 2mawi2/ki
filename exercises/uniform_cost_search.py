@@ -22,16 +22,25 @@ heuristic = {
 }
 
 
+def get_path_cost(path):
+    total_cost = 0
+    for i in range(len(path) - 1):
+        p = "".join(sorted(path[i] + path[i + 1]))
+        cost = costs[p]
+        total_cost += cost
+    return total_cost
+
+
 def get_best_node(search_tree):
-    """take node with min heuristic"""
-    return sorted(search_tree, key=lambda x: heuristic[x])[0]
+    raise NotImplemented()
 
 
-def greedy_best_first_search(g, start, end):
+def uniform_cost_search(g, start, end):
     visited, search_tree, cost = [], [start], 0
     while search_tree:
 
         node = get_best_node(search_tree)
+        search_tree.remove(node)
 
         if node == end:
             visited.append(node)
@@ -45,4 +54,4 @@ def greedy_best_first_search(g, start, end):
 
 
 if __name__ == '__main__':
-    print(greedy_best_first_search(graph, "S", "G"))  # ['S', 'A', 'G']
+    print(uniform_cost_search(graph, "S", "G"))  # ['S', 'A', 'G']
