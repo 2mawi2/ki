@@ -6,18 +6,22 @@ graph = {"S": ["A", "B"],
          "G": ["A"]}
 
 
-def breadth_first_search(g, start):
-    visited, stack, cost = [], [start], 0
-    while stack:
-        node = stack.pop(0)  # FiFo -> first element from queue is taken
+def breadth_first_search(g, start, end):
+    visited, queue = [], [start]
+    while queue:
+        node = queue.pop(0)  # FiFo -> first element from queue is taken
+
+        if node == end:
+            visited.append(node)
+            return visited
 
         if node not in visited:
             visited.append(node)
             successors = [i for i in g[node] if i not in visited]
-            stack.extend(successors)
+            queue.extend(successors)
 
     return visited
 
 
 if __name__ == '__main__':
-    print(breadth_first_search(graph, "S"))  # ['S', 'A', 'B', 'C', 'G']
+    print(breadth_first_search(graph, "S", "G"))  # ['S', 'A', 'B', 'C', 'G']
