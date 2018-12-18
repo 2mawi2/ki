@@ -24,3 +24,7 @@ class TestGet_path_cost(TestCase):
     def test_get_path_cost_not_starting_from_s(self):
         result = get_path_cost(["C", "A"])
         self.assertEqual(result, 2)
+
+    def test_get_path_cost_four_nodes(self):
+        result = get_path_cost(["S", "B", "C", "A"])
+        self.assertEqual(result, 4)
